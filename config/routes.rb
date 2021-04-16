@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
   root "home#index"
+  # get '/users', to: 'home#index', as: 'user_root'
   get "home/about"
 
   post "/" => "home#index"
