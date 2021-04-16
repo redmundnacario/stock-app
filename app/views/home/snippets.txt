@@ -1,0 +1,5 @@
+<% company = @client.company('MSFT')%>
+<%= company%>
+
+<% logo = @client.logo('MSFT')%>
+<img src="<%= logo.url %>">

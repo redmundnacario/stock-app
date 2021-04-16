@@ -1,8 +1,23 @@
-<h1> Home#index</h1>
-<p> Find me in app/views/home/index.html.erb</p>
+<h1> Home</h1>
 
-<% company = @client.company('MSFT')%>
-<%= company%>
+<%= form_tag root_path, :method => 'POST' do%>
+    <%= text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
+    <%= submit_tag "Search" %>
+<% end %>
 
-<% logo = @client.logo('MSFT')%>
-<img src="<%= logo.url %>">
+<br>
+
+<% if @quote %>
+    <%= @quote.symbol%><br>
+    <%= @quote.company_name%><br>
+    $<%= @quote.latest_price%><br>
+    <%= @quote.change_percent %>%<br>
+    <%= @quote.change%><br>
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+
+<% if @error %>
+    <%= @error %>
+<% end %>
